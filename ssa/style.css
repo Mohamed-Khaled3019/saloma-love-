@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0a0718;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Hero
+========================= */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.75)
+    ),
+    url('3.jpeg') center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+.main-title {
+  font-size: 7rem;
+  font-weight: 900;
+  background:
+    linear-gradient(
+      90deg,
+      #ff9a9e,
+      #fad0c4,
+      #ff9a9e
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle,
+.scroll-hint {
+  margin-top: 20px;
+  font-size: 1.6rem;
+}
+
+.scroll-hint {
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+}
+
+/* =========================
+   Music Button
+========================= */
+.music-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+
+  width: 75px;
+  height: 75px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 8px 25px rgba(255, 0, 100, 0.35),
+    inset 0 0 10px rgba(255,255,255,0.1);
+
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.music-btn:hover {
+  transform: scale(1.12);
+}
+
+.music-btn.active {
+  background:
+    linear-gradient(
+      135deg,
+      #ff4d88,
+      #ff0066
+    );
+
+  animation: pulse 1.5s infinite;
+}
+
+/* =========================
+   Counter
+========================= */
+.counter {
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+
+  padding: 40px;
+  border-radius: 25px;
+
+  max-width: 700px;
+  margin: 60px auto;
+
+  border: 1px solid rgba(255,154,158,0.2);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.3);
+}
+
+.counter h2 {
+  margin-bottom: 20px;
+}
+
+#countdown {
+  font-size: 2.5rem;
+  margin-top: 15px;
+  color: #ff9a9e;
+}
+
+/* =========================
+   Gallery
+========================= */
+.gallery h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin: 40px 0 50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff9a9e,
+      #fad0c4
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.envelopes {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(340px, 1fr));
+
+  gap: 40px;
+
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* =========================
+   Modern Envelope
+========================= */
+.envelope {
+  height: 440px;
+  perspective: 1400px;
+  cursor: pointer;
+}
+
+.envelope-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  transition:
+    transform 0.85s
+    cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform-style: preserve-3d;
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6);
+}
+
+.envelope.open .envelope-inner {
+  transform: rotateY(180deg);
+}
+
+.envelope-front,
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  backface-visibility: hidden;
+}
+
+/* الظرف */
+.envelope-front {
+  background:
+    linear-gradient(
+      145deg,
+      #f8f9fa,
+      #e9ecef
+    );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #2c2c2c;
+
+  border: 10px solid #dee2e6;
+
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,0.1);
+}
+
+.envelope-front::before {
+  content: "اوعي تدوسي ❤️";
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* داخل الظرف */
+.envelope-back {
+  background: #e2bbbb;
+  transform: rotateY(180deg);
+
+  padding: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.envelope-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* =========================
+   Love Message
+========================= */
+.love-message {
+  padding: 90px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.message-box {
+  width: 90%;
+  max-width: 850px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 35px;
+
+  padding: 50px;
+
+  border:
+    1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 10px 35px rgba(255, 0, 100, 0.18);
+
+  text-align: center;
+}
+
+.message-box h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff9a9e,
+      #fad0c4
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.message-box p {
+  font-size: 1.4rem;
+  line-height: 2;
+  color: #f5dbe6;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+
+  color: #ff9a9e;
+  font-size: 1.4rem;
+
+  margin-top: 50px;
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(255,0,100,0.45);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 18px rgba(255,0,100,0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255,0,100,0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+
+  .main-title {
+    font-size: 4rem;
+  }
+
+  .subtitle,
+  .scroll-hint {
+    font-size: 1.2rem;
+  }
+
+  #countdown {
+    font-size: 1.7rem;
+  }
+
+  .gallery h2 {
+    font-size: 2rem;
+  }
+
+  .message-box {
+    padding: 30px;
+  }
+
+  .message-box h2 {
+    font-size: 2rem;
+  }
+
+  .message-box p {
+    font-size: 1.1rem;
+  }
+
+  .music-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
+  }
+}
